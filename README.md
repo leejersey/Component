@@ -1,0 +1,2 @@
+# Component
+jquery-component
