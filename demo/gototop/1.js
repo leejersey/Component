@@ -18,14 +18,13 @@
 		},
 		render : function(){
 			var tpl = this.tpl;
-			
 			$('body').append(tpl.$gottotop);
 		},
 		bindEvt : function(){
 			var self = this,
 				tpl = this.tpl,
 				doms =this.doms;
-
+				
 			doms.$window.on('scroll',function(){
 				var $offsetTop = $('body').scrollTop();
 				if($offsetTop>100){

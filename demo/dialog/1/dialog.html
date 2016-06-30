@@ -1,0 +1,135 @@
+<!doctype html>
+<head>
+  <title>dialog demo</title>
+  <meta charset="UTF-8">
+  <script src="../../../jquery-1.10.2.js"></script>
+<style>
+.dialog .dialog-overlay {
+	width:100%;
+	height:100%;
+	opacity: 0.5;
+	background:#000;
+	position:absolute;
+	top:0; left:0;
+	z-index:3000;
+}
+.dialog .dialog-box {
+  position:absolute;
+	z-index:5000;
+  left: 50%;
+  top: 30%;
+  margin-left: -164px;
+  font-size: 14px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+	background:#eee;
+	width:328px;
+}
+.dialog .dialog-header {
+    padding: 10px 19px;
+    color: #fff;
+    background: #676666;
+}
+.dialog .dialog-header h3{
+    margin: 0;
+    font-size: 14px;
+}
+.dialog .dialog-header .btn-close{
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font-family: fantasy;
+  cursor: pointer;
+}
+.dialog .dialog-content {
+	padding:10px;
+	margin:13px;
+	color:#666;
+	font-size:11px;
+}
+.dialog .dialog-footer{
+  text-align: center;
+}
+a.btn {
+  position: relative;
+  text-align: center;
+  background-color: #e33100;
+  display: inline-block;
+  width: 50px;
+  padding: 5px 0 6px;
+  margin: 2px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 3px;
+}
+a.btn:hover {
+	background-color: #c33100;
+}
+</style>
+
+</head>
+<body>
+<button id="open1"> 打开1</button>
+<button id="open2"> 打开2</button>
+<button id="open3"> 打开3</button>
+<button id="open4"> 打开4</button>
+<button id="close">关闭</button>
+<script src="1.js"></script>
+<script>
+  $('#open1').on('click',function(){
+    Dialog.open({
+      title : 'alert',
+      message:'这是一个alert',
+      isShowCloseBtn:false,
+      isShowConfirmBtn:true,
+      onConfirm:function(){
+        alert('关闭')
+      }
+    });
+  });
+
+  $('#open2').on('click',function(){
+    Dialog.open({
+      title : 'alert',
+      message:'这是一个alert',
+      isShowCloseBtn:true,
+      isShowConfirmBtn:true,
+      onClose:function(){
+        alert('取消');
+      },
+      onConfirm:function(){
+        alert('关闭');
+      }
+    });
+  });
+
+  var tpl = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>';
+  $('#open3').on('click',function(){
+    Dialog.open({
+      title: '内容',
+      message: tpl,
+      isShowCloseBtn: true,
+      isShowConfirmBtn: true,
+      onClose: function(){
+        alert('close')
+      },
+      onConfirm: function(){
+        alert('确定');
+      }
+    });
+  });
+
+  $('#open4').on('click',function(){
+    Dialog.open({
+      title: '内容',
+      message: 'hello',
+      isShowCloseBtn: false,
+      isShowConfirmBtn: false
+    });
+  });
+
+  $('#close').on('click', function(){
+    Dialog.close();
+  });
+</script>
+</body>
