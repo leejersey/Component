@@ -60,7 +60,7 @@ var Dialog = (function(){
 			
 
 			$('body').on('mouseup', function() {
-                    $('.draggable').length && $('.draggable').removeClass('draggable').removeData('pos');
+                    $('.draggable').length && $('.draggable').removeClass('draggable').removeData('evtPos');
             })
 			
 		},
