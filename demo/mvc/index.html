@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<h3>JavaScript no MVC</h3>
+ <div>
+  <select name="" id="setAnimal">
+   <option value="cat">cat</option>
+   <option value="fish">fish</option>
+   <option value="bird">bird</option>
+  </select>
+  <p id="animalAction"></p>
+ </div>
+ <script type="text/javascript">
+  var animal = document.getElementById('setAnimal');
+  console.dir(animal);
+  animal.onchange = function() {
+   var action = null;
+   switch (this.value) {
+   case 'cat':
+    action = 'cat meows';
+    break;
+   case 'fish':
+    action = 'fish swim';
+    break;
+   case 'bird':
+    action = 'bird fly';
+    break;
+   default:
+    action = 'unknow';
+   }
+   console.log(action);
+   document.getElementById('animalAction').innerHTML = action;
+  };
+ </script>
+</body>
+</html>
