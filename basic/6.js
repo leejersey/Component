@@ -1,6 +1,8 @@
 //继承
 //person.call(this,arguments)
-//
+//Child.prototype = new Person()
+//原型继承
+
 //父类
 function Person(name,age){
 	this.name = name;
@@ -12,7 +14,7 @@ Person.prototype.say = function(){
 }
 
 var man = new Person('lee','20');
-console.log(man);
+//console.log(man);
 man.say();
 
 //子类
@@ -22,13 +24,21 @@ function Coder(name,age,tool,work){
 	this.work = work;
 }
 
+//原型继承
 Coder.prototype = new Person();
 
+//改写父类方法
 Coder.prototype.say = function(){
-	console.log(this.name+' '+this.age+' '+this.tool+' '+this.work);
-	Person.prototype.say.apply(this,arguments);
+	console.log(this.name+' '+this.age+' '+this.tool+' '+this.work+'+++++++++++++');
+	//Person.prototype.say.apply(this,arguments);
+}
+
+//子
+Coder.prototype.write = function(){
+	console.log(this.name+' '+this.age+' '+this.tool+' '+this.work+'------------');
 }
 
 var coder = new Coder('tom','28','pc','code');
 coder.say();
-console.log(coder);
+coder.write();
+//console.log(coder);
