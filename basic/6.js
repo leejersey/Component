@@ -1,6 +1,8 @@
 //继承
 //person.call(this,arguments)
+//原型继承
 //
+
 //父类
 function Person(name,age){
 	this.name = name;
@@ -22,6 +24,7 @@ function Coder(name,age,tool,work){
 	this.work = work;
 }
 
+//原型继承
 Coder.prototype = new Person();
 
 Coder.prototype.say = function(){
