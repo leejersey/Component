@@ -1,0 +1,25 @@
+#disp{
+        width: 400px;
+        height: 300px;
+        border: 2px solid rgb(255,45,45);
+        position: relative;
+        overflow: hidden;
+    }
+    #bar{
+        width: 20px;
+        height: 300px;
+        float: right;
+        right: -22px;
+        top: -1px;
+        border-left: 2px solid rgb(255,45,45);
+    }
+    #slide{
+        width: 20px;
+        height: 60px;
+        position: absolute;
+        background: rgb(255,123,123);
+    }
+    #article{
+        padding: 0px 30px 20px 10px;
+        position: absolute;
+    }

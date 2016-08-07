@@ -1,0 +1,83 @@
+body{
+    background-color: #ccc;
+}
+
+/*主体*/
+.scroll-demo {
+    width: 540px;
+    margin: 30px auto;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+}
+
+/*标签区*/
+.scroll-tab {
+    height: 34px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #666;
+    background: #f8f8f8;
+    cursor: pointer;
+}
+
+.scroll-tab .tab-item {
+    float: left;
+    padding: 0 18px;
+    height: 34px;
+    font-size: 14px/34px "Microsoft Yahei"
+    text-align: center;
+    line-height: 30px;
+    border-right: 1px solid #e5e5e5;
+}
+
+.scroll-tab .tab-active { 
+    margin: -1px 0;
+    color: #00be3c;
+    background: #fff;
+    border-top: 2px solid #00be3c;
+} 
+
+/*滑动内容区*/
+.scroll-wrap {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+/*滑动内容*/
+.scroll-wrap .scroll-cont {
+    position: absolute;
+    padding: 0 15px;
+}
+
+.scroll-wrap .scroll-cont h3 {
+    font: 16px/3 "Microsoft Yahei";
+    text-align: center;
+}
+
+.scroll-wrap .scroll-cont p { 
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 30px;
+    text-indent: 2em;
+}
+
+/*滚动条*/
+.scroll-wrap .scroll-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 10px;
+    height: 100%;
+    background-color: #eaeaea;
+}
+
+/*滑块*/
+.scroll-bar .scroll-slider {
+    position: absolute;
+    top: 0;
+    left: 1px;
+    width: 8px;
+    height: 30px;
+    background-color: #fff;
+}
