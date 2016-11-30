@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="darktooltip.css">
+
+</head>
+
+<body>
+    <div class="example">
+
+        <h2>Default</h2>
+
+        <div style="width:300px;position:relative" id="def" class="box" data-tooltip="Hello world">default</div>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/>
+        <div style="width:300px;position:relative"  id="def2" class="box" data-tooltip="Hello world2">default</div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/>
+        <div style="width:300px;position:relative"  id="de3" class="box" data-tooltip="Hello world3">default</div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/>
+        <div style="width:300px;position:relative"  id="def4" class="box" data-tooltip="Hello world4">default</div>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/>
+
+    </div>
+
+    <script src="../../jquery-1.10.2.js"></script>
+    <script src="app.js"></script>
+    <script>
+        tooltips.create({
+                element:'.box',
+                opacity: 1,
+                size: 'medium',
+                gravity: 'south',
+                theme: 'dark',
+                trigger: 'hover',
+                animation: 'none',
+                confirm: false,
+                yes: 'Yes',
+                no: 'No',
+                finalMessage: '',
+                finalMessageDuration: 1000,
+                onYes: function(){},
+                onNo: function(){}
+        });
+        //tooltips.init()
+    </script>
+</body>
+
+</html>
