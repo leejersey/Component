@@ -82,15 +82,98 @@ var Utils = {
 		bindEvents:function(){
 			this.$newTodo.on('keyup',this.create);
 			this.$todoList.on('click','.destroy',this.destroy);
+			this.$toggleAll.on('click',this.toggleAll);
+			this.$todoList.on('change','.toggle',this.toggle);
+			this.$todoList.on('dblclick','label',this.edit);
+			this.$todoList.on('keypress','.edit',this.blurOnEnter);
+			this.$todoList.on('blur', '.edit', this.update);
+			this.$footer.on('click','#clear-completed',this.destroyCompleted);
 		},
 		//渲染
 		render:function(){
 			this.$todoList.html(this.getTodoTemplate(this.todos));
-			this.$main.show();
+			this.$main.toggle(!!this.todos.length);
+			this.$toggleAll.prop('checked', !this.activeTodoCount());
+			this.renderFooter();
+			Utils.store('todos-jquery', this.todos);
 		},
 		//渲染底部
 		renderFooter:function(){
+			var todoCount = this.todos.length;
+			var activeTodoCount = this.activeTodoCount();
+			var footer={
+				activeTodoCount: activeTodoCount,
+				activeTodoWord: Utils.pluralize(activeTodoCount, 'item'),
+				completedTodos: todoCount - activeTodoCount
+			}
+			this.$footer.toggle(!!todoCount);
+			this.$footer.html(this.getFootTemlate(footer))
+		},
+		//选中所有
+		toggleAll:function(){
+			var isChecked = $(this).prop('checked');
 
+			$.each(App.todos,function(index,val){
+				val.completed = isChecked;
+			})
+			App.render();
+		},
+		//获取完成的个数
+		activeTodoCount:function(){
+			var count = 0;
+
+			$.each(this.todos,function(index,val){
+				if(!val.completed){
+					count++;
+				}
+			})
+
+			return count;
+		},
+		//清除完成
+		destroyCompleted:function(){
+			var todos = App.todos;
+			var l = todos.length;
+
+			while (l--) {
+				if (todos[l].completed) {
+					todos.splice(l, 1);
+				}
+			}
+
+			App.render();
+		},
+		//选中单个
+		toggle:function(){
+			App.getTodo(this, function (i, val) {
+				val.completed = !val.completed;
+			});
+			App.render();
+		},
+		//修改内容
+		edit:function(){
+			var $input = $(this).closest('li').addClass('editing').find('.edit');
+			var val = $input.val();
+			$input.val(val).focus();
+		},
+		//修改结束
+		blurOnEnter:function(e){
+			if (e.which === App.ENTER_KEY) {
+				e.target.blur();
+			}
+		},
+		//失去焦点后更新数据
+		update:function(){
+			var cval = $.trim($(this).removeClass('editing').val());
+
+			App.getTodo(this,function(index,val){
+				if(cval){
+					this.todos[index].title = cval;
+				}else {
+					this.todos.splice(index, 1);
+				}
+			})
+			App.render();
 		},
 		//获取一条list
 		getTodo:function(elem,callback){
@@ -125,7 +208,6 @@ var Utils = {
 		//删除一条数据
 		destroy:function(){
 			App.getTodo(this,function(index,val){
-				console.log(val);
 				App.todos.splice(index,1);
 				App.render();
 			})
